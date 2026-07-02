@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./App.css";
 import { CONTACT, EXPERIENCE, LINKS, PROFILE, PROJECTS, SKILLS } from "./constants/constants";
 import { ASCII_ART } from "./constants/ascii_art";
+import TerminalDock from "./TerminalDock";
 
 const NAV = ["home", "about", "skills", "projects", "experience", "contact"];
 
@@ -45,11 +46,21 @@ export default function App() {
 
       <main>
         <div className="pf-topbar">
-          SYSTEM STATUS:{" "}
-          <span className="pf-pulse">
-            <i /> ONLINE
-          </span>
+          <div className="pf-terminal-hint">
+            <span className="pf-hint-key">ctrl</span>
+            <span className="pf-hint-plus">+</span>
+            <span className="pf-hint-key">~</span>
+          </div>
+
+          <div>
+            SYSTEM STATUS:{" "}
+            <span className="pf-pulse">
+              <i /> ONLINE
+            </span>
+          </div>
         </div>
+
+        <TerminalDock />
 
         {/* HERO */}
         <section className="pf-hero">

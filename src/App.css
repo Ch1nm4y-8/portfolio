@@ -154,6 +154,7 @@
 }
 .pf-sidebar-bottom {
   margin-top: auto;
+  padding-bottom: 42px;
   display: flex;
   gap: 10px;
   padding-top: 24px;
@@ -183,7 +184,7 @@
 }
 .pf-topbar {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
   padding: 18px 36px;
   font-family: var(--mono);
@@ -608,4 +609,54 @@
   color: var(--fg-faint);
   flex-wrap: wrap;
   gap: 10px;
+}
+
+.pf-terminal-hint {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--fg-faint);
+  animation: pf-hint-fade 3s ease-in-out infinite;
+}
+@keyframes pf-hint-fade {
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.9;
+  }
+}
+.pf-hint-key {
+  border: 1px solid var(--line);
+  background: var(--panel);
+  color: var(--fg-dim);
+  padding: 2px 7px;
+  border-radius: 4px;
+  font-size: 11px;
+  box-shadow: 0 2px 0 var(--line);
+}
+.pf-sidebar-terminal-hint {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--fg-faint);
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.pf-sidebar-terminal-hint span {
+  color: var(--accent);
+}
+.pf-sidebar-terminal-hint kbd {
+  border: 1px solid var(--line);
+  background: var(--panel);
+  color: var(--fg-dim);
+  padding: 1px 6px;
+  border-radius: 4px;
+  font-family: var(--mono);
+  font-size: 11px;
+  box-shadow: 0 2px 0 var(--line);
 }
