@@ -3,12 +3,12 @@ import { useEffect, useState } from "react";
 export function useAsciiGlitch(
   ascii,
   {
-    minInterval = 2500,
-    maxInterval = 7000,
-    duration = 80,
+    minInterval = 1500,
+    maxInterval = 3000,
+    duration = 100,
 
-    minBandHeight = 2,
-    maxBandHeight = 5,
+    minBandHeight = 3,
+    maxBandHeight = 6,
 
     maxShift = 5,
   } = {}

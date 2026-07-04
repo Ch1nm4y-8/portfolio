@@ -15,6 +15,7 @@ const NAV = ["home", "about", "skills", "projects", "experience", "contact"];
 
 export default function App() {
   const [active, setActive] = useState("home");
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const ASCII_ARTS = useMemo(() => [ASCII_HEADPHONE, ASCII_ART_2, ASCII_ZORO, ASCII_ART, ASCII_PACMAN, ASCII_HAZARD, ASCII_PENGUIN], []);
 
@@ -36,12 +37,26 @@ export default function App() {
 
   return (
     <div className="pf-shell">
-      <aside className="pf-sidebar">
-        <div className="pf-brand">
-          <span className="pf-dot" />
-          {PROFILE.handle}@portfolio:~$
+      <aside className={`pf-sidebar${menuOpen ? " open" : ""}`}>
+        <div className="pf-brand-row">
+          <div className="pf-brand">
+            <span className="pf-dot" />
+            {PROFILE.handle}@portfolio:~$
+          </div>
+
+          <button
+            className={`pf-hamburger${menuOpen ? " active" : ""}`}
+            aria-label="Toggle menu"
+            aria-expanded={menuOpen}
+            onClick={() => setMenuOpen((o) => !o)}
+          >
+            <span />
+            <span />
+            <span />
+          </button>
         </div>
-        <nav>
+
+        <nav className={menuOpen ? "open" : ""}>
           {NAV.map((id) => (
             <a
               key={id}
@@ -50,14 +65,22 @@ export default function App() {
               onClick={(e) => {
                 e.preventDefault();
                 scrollTo(id);
+                setMenuOpen(false);
               }}
             >
               <span>&gt;_</span> {id.toUpperCase()}
               <span className="car">_</span>
             </a>
           ))}
+
+          <div className="pf-sidebar-bottom pf-sidebar-bottom-mobile">
+            <a className="pf-icon-btn" href={LINKS.github} target="_blank" title="GitHub">⌥</a>
+            <a className="pf-icon-btn" href={LINKS.linkedin} target="_blank" title="LinkedIn">in</a>
+            <a className="pf-icon-btn" href={LINKS.mail} target="_blank" title="Email">@</a>
+          </div>
         </nav>
-        <div className="pf-sidebar-bottom">
+
+        <div className="pf-sidebar-bottom pf-sidebar-bottom-desktop">
           <a className="pf-icon-btn" href={LINKS.github} target="_blank" title="GitHub">⌥</a>
           <a className="pf-icon-btn" href={LINKS.linkedin} target="_blank" title="LinkedIn">in</a>
           <a className="pf-icon-btn" href={LINKS.mail} target="_blank" title="Email">@</a>
@@ -83,7 +106,7 @@ export default function App() {
         <TerminalDock />
 
         {/* HERO */}
-        <section className="pf-hero">
+        <section className="pf-hero" id="home">
           <pre className={`pf-ascii${glitching ? " glitch" : ""}`}>
             {displayAscii}
           </pre>
@@ -195,7 +218,7 @@ export default function App() {
           <span>© {new Date().getFullYear()} {PROFILE.handle} — All rights reserved.</span>
         </footer>
       </main>
-    </div>
+    </div >
   );
 }
 

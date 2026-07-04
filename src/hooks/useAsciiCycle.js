@@ -5,17 +5,14 @@ export function useAsciiCycle(arts, interval = 1000) {
   const [glitching, setGlitching] = useState(false);
 
   useEffect(() => {
-    console.log("helllloooooooooooooo");
     if (arts.length < 2) return;
 
     const tick = setInterval(() => {
-      console.log("tick");
       // 1. start glitch animation
       setGlitching(true);
 
       // 2. mid-glitch: swap the art so it changes while the screen is "broken"
       setTimeout(() => {
-        console.log("inside");
         setIndex((prev) => {
           // pick a random index that isn't the current one
           let next;
