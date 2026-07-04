@@ -10,12 +10,14 @@ import { ASCII_HAZARD, ASCII_PACMAN } from "./constants/ascii_hazard";
 import { useAsciiGlitch } from "./hooks/useAsciiGlitch";
 import TerminalDock from "./TerminalDock";
 import { useAsciiCycle } from "./hooks/useAsciiCycle";
+import Intro from "./Intro";
 
 const NAV = ["home", "about", "skills", "projects", "experience", "contact"];
 
 export default function App() {
   const [active, setActive] = useState("home");
   const [menuOpen, setMenuOpen] = useState(false);
+  const [booted, setBooted] = useState(false);
 
   const ASCII_ARTS = useMemo(() => [ASCII_HEADPHONE, ASCII_ART_2, ASCII_ZORO, ASCII_ART, ASCII_PACMAN, ASCII_HAZARD, ASCII_PENGUIN], []);
 
@@ -34,6 +36,11 @@ export default function App() {
     setActive(id);
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
+
+
+  if (!booted) {
+    return <Intro onContinue={() => setBooted(true)} />;
+  }
 
   return (
     <div className="pf-shell">

@@ -45,7 +45,7 @@ export const PROJECTS = [
   {
     id: "02",
     name: "Social Media Application",
-    desc: "A social media application with real-time chat, notifications, and media sharing capabilities.",
+    desc: "A social media application with feeds, posts, likes, comments, follower management, real-time chat, and video calling using Node.js, React, TypeScript, WebSockets, and WebRTC.",
     link: "#",
   },
   {

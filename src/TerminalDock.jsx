@@ -238,6 +238,9 @@ function Terminal({ firstChar, onShutdown }) {
             } else if (file === "contact.txt") {
                 commands.contact();
             }
+            else {
+                print(`<span class="td-err">file not found:</span> ${esc(file)}`);
+            }
             return;
         }
 

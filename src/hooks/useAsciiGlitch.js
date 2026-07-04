@@ -7,10 +7,10 @@ export function useAsciiGlitch(
     maxInterval = 3000,
     duration = 100,
 
-    minBandHeight = 3,
-    maxBandHeight = 6,
+    minBandHeight = 10,
+    maxBandHeight = 20,
 
-    maxShift = 5,
+    maxShift = 15,
   } = {}
 ) {
   const [display, setDisplay] = useState(ascii);
