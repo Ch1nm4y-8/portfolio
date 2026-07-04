@@ -101,13 +101,7 @@ function Terminal({ firstChar, onShutdown }) {
         },
 
         about: async () => {
-            setShowInput(false)
-            print(`Hi, I'm <span class="td-a2">${PROFILE.name}</span> — ${PROFILE.role}.`);
-            for (const p of PROFILE.bio[0]) {
-                print(`${p}`);
-                await delay(10);
-            }
-            setShowInput(true)
+            print(`Hi, I'm <span class="td-a2">${PROFILE.name}</span> — ${PROFILE.bio[0]}.`);
         },
 
         ping: () => print(`<span class="td-dim">pong</span>`),
