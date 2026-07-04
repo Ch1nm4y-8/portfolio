@@ -1,13 +1,33 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import "./App.css";
 import { CONTACT, EXPERIENCE, LINKS, PROFILE, PROJECTS, SKILLS } from "./constants/constants";
 import { ASCII_ART } from "./constants/ascii_art";
+import { ASCII_ART_2 } from "./constants/ascii_art2";
+import { ASCII_HEADPHONE } from "./constants/ascii_headphone";
+import { ASCII_PENGUIN } from "./constants/ascii_penguin";
+import { ASCII_ZORO } from "./constants/ascii_zoro";
+import { ASCII_HAZARD, ASCII_PACMAN } from "./constants/ascii_hazard";
+import { useAsciiGlitch } from "./hooks/useAsciiGlitch";
 import TerminalDock from "./TerminalDock";
+import { useAsciiCycle } from "./hooks/useAsciiCycle";
 
 const NAV = ["home", "about", "skills", "projects", "experience", "contact"];
 
 export default function App() {
   const [active, setActive] = useState("home");
+
+  const ASCII_ARTS = useMemo(() => [ASCII_HEADPHONE, ASCII_ART_2, ASCII_ZORO, ASCII_ART, ASCII_PACMAN, ASCII_HAZARD, ASCII_PENGUIN], []);
+
+  const { ascii, glitching } = useAsciiCycle(ASCII_ARTS, 15000);
+  const displayAscii = useAsciiGlitch(ascii, {
+    minInterval: 2500,
+    maxInterval: 5000,
+    duration: 80,
+    minBandHeight: 2,
+    maxBandHeight: 5,
+    maxShift: 5,
+  });
+  // const ascii = useAsciiGlitch(ASCII_HEADPHONE);
 
   const scrollTo = (id) => {
     setActive(id);
@@ -64,7 +84,9 @@ export default function App() {
 
         {/* HERO */}
         <section className="pf-hero">
-          <pre className="pf-ascii">{ASCII_ART}</pre>
+          <pre className={`pf-ascii${glitching ? " glitch" : ""}`}>
+            {displayAscii}
+          </pre>
 
           <div className="pf-hero-text">
             <div className="pf-tag">whoami</div>

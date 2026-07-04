@@ -660,3 +660,37 @@
   font-size: 11px;
   box-shadow: 0 2px 0 var(--line);
 }
+
+.pf-ascii.glitch {
+  animation: ascii-glitch 0.4s steps(1) forwards;
+}
+@keyframes ascii-glitch {
+  0% {
+    opacity: 1;
+    filter: none;
+  }
+  15% {
+    opacity: 0.4;
+    filter: blur(1px) brightness(2) hue-rotate(90deg);
+  }
+  30% {
+    opacity: 0.8;
+    filter: none;
+  }
+  45% {
+    opacity: 0.2;
+    filter: blur(2px) brightness(3) hue-rotate(-60deg);
+  }
+  60% {
+    opacity: 0.9;
+    filter: none;
+  }
+  75% {
+    opacity: 0.3;
+    filter: blur(1px) brightness(2);
+  }
+  100% {
+    opacity: 1;
+    filter: none;
+  }
+}
